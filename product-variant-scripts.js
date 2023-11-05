@@ -44,7 +44,7 @@ class SwatchBuilder {
           if (title) title.innerHTML = `${initialTitle} <span class="selected-variant-title">${value}</span>`;
         });
         if (this.isColor(value)) {
-          newVariant.style.setProperty('--color-variant-background', value);
+          newVariant.style.setProperty('--variant-background', value);
         }
       }
       option.classList.add('wm-custom-variants')
