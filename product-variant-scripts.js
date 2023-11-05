@@ -14,6 +14,7 @@ class SwatchBuilder {
 
   init() {
     if ((this.pluginMode === 'dev') && !this.isBackend) return;
+    console.log('run')
     this.buildSwatches();
   }
   
@@ -42,7 +43,9 @@ class SwatchBuilder {
           this.setVariant(newVariant, select)
           if (title) title.innerHTML = `${initialTitle} <span class="selected-variant-title">${value}</span>`;
         });
-        newVariant.style.setProperty('--color-variant-background', value);
+        if (this.isColor(value)) {
+          newVariant.style.setProperty('--color-variant-background', value);
+        }
       }
       option.classList.add('wm-custom-variants')
       option.append(newVariantContainer);
@@ -55,7 +58,15 @@ class SwatchBuilder {
     select.value = button.dataset.variant;
     select.dispatchEvent(new Event('change'));
   }
+  isColor(colorString) {
+    let el = document.createElement('div');
+    el.style.backgroundColor = colorString;
+    document.body.appendChild(el);
+    let style = window.getComputedStyle(el).backgroundColor;
+    document.body.removeChild(el);
+    if (style === 'rgba(0, 0, 0, 0)') style = null;
+    return style;
+  }
 }
-
 
 const wmBuildSwatches = new SwatchBuilder();
