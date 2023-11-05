@@ -5,12 +5,16 @@
 
 class SwatchBuilder {
   constructor() {
-    this.variantOptions = document.querySelectorAll('.grid-item .variant-option, .pdp-details .variant-option, .product-details .variant-option')
+    this.variantOptions = document.querySelectorAll('.grid-item .variant-option, .pdp-details .variant-option, .product-details .variant-option');
+    this.script = document.querySelector('script[data-plugin="wm-product-variants"]')
+    this.pluginMode = this.script ? this.script.dataset.mode : 'live';
+    this.isBackend = window.self !== window.top;
     this.init()
   }
 
   init() {
-    this.buildSwatches()
+    if ((this.pluginMode === 'dev') && !this.isBackend) return;
+    this.buildSwatches();
   }
   
   buildSwatches() {
