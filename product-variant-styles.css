@@ -2,11 +2,6 @@
   Product Variants
   This Code is Licensed by Will-Myers.com
 ========== */
-/*.wm-variants{
-  --size: 30px;
-  --spacing: 6px;
-}*/
-
 .wm-variants {
   display:flex;
   flex-wrap: wrap;
