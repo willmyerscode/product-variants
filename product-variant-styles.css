@@ -8,20 +8,31 @@
   gap: var(--variant-gap, 8px);
 }
 .wm-variant {
-  background: unset;
-  background-size: cover !important;
-  border: 1px solid;
-  border-color: hsla(var(--black-hsl, black), 0.5);
   display: grid;
   place-items: center;
-  
+  height: var(--variant-size, 60px);
+  min-width: var(--variant-size, 60px);
+  padding: var(--variant-padding-v, 4px) var(--variant-padding-h, 8px);
+  font-size: var(--variant-font-size, 14px);
+  color: var(--variant-text-color, var(--paragraphMediumColor, currentColor));
+  background-size: cover !important;
+  background: var(--variant-background, rgba(255, 255, 255, 0));
+  border-width: var(--variant-border-thickness, 1px);
+  border-style: var(--variant-border-style, solid);
+  border-color: var(--variant-border-color, var(--paragraphMediumColor, currentColor));
+  border-radius: var(--variant-border-radius, 10px);
+}
+.wm-variant.active {
+  background-color: var(--active-variant-background, var(--primaryButtonBackgroundColor));
+  color: var(--active-variant-color, var(--primaryButtonTextColor));
+  border-color: var(--active-variant-border-color, var(--variant-border-color, transparent));
 }
 .wm-variant.active,
 .wm-variant.active:focus,
 .wm-variant:focus {
-  outline-width: var(---active-variant-width, 2px);
+  outline-width: var(--active-variant-outline-width, 2px);
   outline-offset: 2px;
-  outline-color: var(--active-variant-color, var(--primaryButtonBackgroundColor, currentColor));
+  outline-color: var(--active-variant-outline-color, var(--primaryButtonBackgroundColor, currentColor));
   outline-style: solid;
 }
 .wm-custom-variants .variant-select-wrapper,
@@ -40,39 +51,18 @@
 }
 
 
-/*Size, Material, & Other Variants*/
-[data-variant-option-name]:not([data-variant-option-name="Color"]) .wm-variant span {
-  
-}
-[data-variant-option-name]:not([data-variant-option-name="Color"]) .wm-variant {
-  height: var(--variant-size, 60px);
-  min-width: var(--variant-size, 60px);
-  flex: 0 1 auto;
-  padding: var(--variant-padding-v, 4px) var(--variant-padding-h, 8px);
-  font-size: var(--variant-font-size, 14px);
-  color: var(--variant-text-color, var(--paragraphMediumColor, currentColor));
-  background: var(--variant-background, rgba(255, 255, 255, 0));
-  border-width: var(--variant-border-thickness, 1px);
-  border-style: var(--variant-border-style, solid);
-  border-color: var(--variant-border-color, var(--paragraphMediumColor, currentColor));
-  border-radius: var(--variant-border-radius, 10px);
-
-}
-[data-variant-option-name]:not([data-variant-option-name="Color"]) .wm-variant.active {
-  background-color: var(--primaryButtonBackgroundColor);
-  color: var(--primaryButtonTextColor);
-}
-
 /*Color Variants*/
 [data-variant-option-name="Color"] .wm-variant span {
   display:none;
 }
 [data-variant-option-name="Color"] .wm-variant {
-  height: var(--color-variant-size, 30px);
-  width: var(--color-variant-size, 30px);
-  background-color: var(--color-variant-background, unset);
-  border-width: var(--variant-border-thickness, 1px);
-  border-style: var(--variant-border-style, solid);
-  border-color: var(--color-variant-background, var(--paragraphMediumColor, currentColor));
+  height: var(--color-variant-size, 35px);
+  width: var(--color-variant-size, 35px);
+  min-width: unset;
   border-radius: var(--color-variant-border-radius, 50%);
+  background: var(--color-variant-background, var(--variant-background));
+  border-width: var(--color-variant-border-thickness, 0px);
+}
+[data-variant-option-name="Color"] .wm-variant.active {
+  background: var(--color-variant-background, var(--variant-background));
 }
