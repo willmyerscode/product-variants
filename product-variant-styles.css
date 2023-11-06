@@ -10,6 +10,7 @@
 .wm-variant {
   display: grid;
   place-items: center;
+  position: relative;
   height: var(--variant-size, 60px);
   min-width: var(--variant-size, 60px);
   padding: var(--variant-padding-v, 4px) var(--variant-padding-h, 8px);
@@ -65,4 +66,27 @@
 }
 [data-variant-option-name="Color"] .wm-variant.active {
   background: var(--color-variant-background, var(--variant-background));
+}
+/*Color Variant Placeholder*/
+[data-variant-option-name="Color"] .wm-variant:after {
+  content:'';
+  position:absolute;
+  top:1px;
+  left:1px;
+  height: calc(100% - 2px);
+  width: calc(100% - 2px);
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  box-sizing:border-box;
+  background-image: repeating-linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 9%,
+    currentColor 9%,
+    currentColor 11%
+  );
+  z-index:-1;
+}
+[data-variant-option-name="Color"] .wm-variant:hover:after {
+  opacity:0.5;
 }
