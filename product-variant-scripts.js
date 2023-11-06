@@ -2,7 +2,6 @@
   Product Variants
   This Code is Licensed by Will-Myers.com
 ========== */
-
 class SwatchBuilder {
   constructor() {
     this.variantOptions = document.querySelectorAll('.grid-item .variant-option, .pdp-details .variant-option, .product-details .variant-option');
@@ -39,6 +38,7 @@ class SwatchBuilder {
         newVariant.dataset.variant = value;
         newVariantContainer.append(newVariant);
         newVariant.innerHTML = `<span>${value}</span>`;
+        newVariant.title = value;
         newVariant.addEventListener('click', (e) => {
           this.setVariant(newVariant, select)
           if (title) title.innerHTML = `${initialTitle} <span class="selected-variant-title">${value}</span>`;
