@@ -43,12 +43,13 @@
 
 /*Product Collection Items*/
 .grid-item .wm-variants {
-  justify-content: center;
+  justify-content: var(--variant-alignment-collection, start);
+  
 }
 
 /*Product Details Page Items*/
 .pdp-selection .wm-variants {
-  justify-content: start;
+  justify-content: var(--variant-alignment-details, start);
 }
 
 
