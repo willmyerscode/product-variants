@@ -11,7 +11,7 @@ class SwatchBuilder {
     this.isBackend = window.self !== window.top;
     this.collectionPageVariants = ['Color', 'Materials'];
     this.init()
-    this.initCreateVariants()
+    this.initCreateVariants();
   }
 
   init() {
@@ -141,7 +141,8 @@ class SwatchBuilder {
   async getUnlistedOptions() {
     const isCollection = document.querySelector('section.products.products-list');
     if (!isCollection) return;
-    const response = await fetch('https://wm-series.squarespace.com/store-1-1?format=json-pretty');
+    const url = new URL(window.location);
+    const response = await fetch(`${url.pathname}?format=json`);
     const json = await response.json();
     return json.items;
   }
