@@ -6,6 +6,14 @@
   display:flex;
   flex-wrap: wrap;
   gap: var(--variant-gap, 8px);
+
+  --placeholder-background: repeating-linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 4px,
+    currentColor 5px,
+    currentColor 5px
+  );
 }
 .wm-variant {
   display: grid;
@@ -44,7 +52,6 @@
 /*Product Collection Items*/
 .grid-item .wm-variants {
   justify-content: var(--variant-alignment-collection, start);
-  
 }
 
 /*Product Details Page Items*/
@@ -61,33 +68,13 @@
   height: var(--color-variant-size, 35px);
   width: var(--color-variant-size, 35px);
   min-width: unset;
+  color: initial;
   border-radius: var(--color-variant-border-radius, 50%);
-  background: var(--color-variant-background, var(--variant-background));
   border-width: var(--color-variant-border-thickness, 0px);
-}
-[data-variant-option-name="Color"] .wm-variant.active {
-  background: var(--color-variant-background, var(--variant-background));
-}
-/*Color Variant Placeholder*/
-[data-variant-option-name="Color"] .wm-variant:after {
-  content:'';
-  position:absolute;
-  top:1px;
-  left:1px;
-  height: calc(100% - 2px);
-  width: calc(100% - 2px);
-  border-radius: 50%;
-  border: 1px solid currentColor;
-  box-sizing:border-box;
-  background-image: repeating-linear-gradient(
-    to bottom right,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0) 9%,
-    currentColor 9%,
-    currentColor 11%
+  border-color: var(--color-variant-border-color, currentColor);
+  border-style: solid;
+  background: var(
+    --variant-background, 
+    var(--placeholder-background)
   );
-  z-index:-1;
-}
-[data-variant-option-name="Color"] .wm-variant:hover:after {
-  opacity:0.5;
 }
